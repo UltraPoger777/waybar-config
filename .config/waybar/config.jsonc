@@ -6,13 +6,13 @@
 
   "modules-left": [
     "custom/weather",
-    "hyprland/workspaces",
-    "custom/todo"
+    "hyprland/workspaces"
   ],
   "modules-center": [
-    "clock#main"
+    "group/time_center"
   ],
   "modules-right": [
+    "group/quick_settings",
     "custom/media",
     "battery",
     "custom/brightness",
@@ -29,6 +29,19 @@
     "on-click": "xdg-open \"https://wttr.in\""
   },
 
+  "group/time_center": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 240,
+      "children-class": "time-center-child",
+      "transition-left-to-right": true
+    },
+    "modules": [
+      "clock#main",
+      "custom/todo-inline"
+    ],
+    "tooltip": false
+  },
   "clock#main": {
     "locale": "en_US.UTF-8",
     "format": "  {:%H:%M}",
@@ -47,14 +60,57 @@
       }
     }
   },
-  "custom/todo": {
-    "exec": "$HOME/.config/waybar/scripts/todo.sh",
+  "custom/todo-inline": {
+    "exec": "$HOME/.config/waybar/scripts/todo_inline.sh",
     "return-type": "json",
     "interval": 20,
     "format": "{}",
     "tooltip": true,
     "on-click": "sh -c 'mkdir -p \"$HOME/.config/waybar\"; touch \"$HOME/.config/waybar/todo.txt\"; xdg-open \"$HOME/.config/waybar/todo.txt\"'",
     "on-click-right": "sh -c 'mkdir -p \"$HOME/.config/waybar\"; touch \"$HOME/.config/waybar/todo.txt\"; xdg-open \"$HOME/.config/waybar/todo.txt\"'"
+  },
+  "group/quick_settings": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 240,
+      "children-class": "quick-settings-child",
+      "transition-left-to-right": true
+    },
+    "modules": [
+      "custom/quick-settings-icon",
+      "custom/wifi",
+      "custom/bluetooth",
+      "custom/hotspot"
+    ],
+    "tooltip": false
+  },
+  "custom/quick-settings-icon": {
+    "format": "󰒓",
+    "tooltip": false
+  },
+  "custom/wifi": {
+    "exec": "$HOME/.config/waybar/scripts/wifi_status.sh",
+    "return-type": "json",
+    "interval": 5,
+    "format": "{}",
+    "tooltip": true,
+    "on-click": "$HOME/.config/waybar/scripts/wifi_toggle.sh"
+  },
+  "custom/bluetooth": {
+    "exec": "$HOME/.config/waybar/scripts/bluetooth_status.sh",
+    "return-type": "json",
+    "interval": 5,
+    "format": "{}",
+    "tooltip": true,
+    "on-click": "$HOME/.config/waybar/scripts/bluetooth_toggle.sh"
+  },
+  "custom/hotspot": {
+    "exec": "$HOME/.config/waybar/scripts/hotspot_status.sh",
+    "return-type": "json",
+    "interval": 5,
+    "format": "{}",
+    "tooltip": true,
+    "on-click": "$HOME/.config/waybar/scripts/hotspot_toggle.sh"
   },
   "custom/media": {
     "exec": "$HOME/.config/waybar/scripts/media.sh",

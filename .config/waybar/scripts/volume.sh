@@ -9,8 +9,23 @@ escape_json() {
   printf '%s' "$value"
 }
 
+build_bar() {
+  local percent="${1:-0}" segments=10 filled i bar=""
+  (( percent < 0 )) && percent=0
+  (( percent > 100 )) && percent=100
+  filled=$(( (percent + 5) / 10 ))
+  for ((i = 1; i <= segments; i++)); do
+    if (( i <= filled )); then
+      bar+="█"
+    else
+      bar+="░"
+    fi
+  done
+  printf '%s' "$bar"
+}
+
 main() {
-  local state_file output volume muted percent icon level changed class_json tooltip previous
+  local state_file output volume muted percent icon level changed class_json tooltip previous direction bar
   state_file="${XDG_RUNTIME_DIR:-/tmp}/waybar-volume.prev"
 
   output="$(wpctl get-volume @DEFAULT_AUDIO_SINK@ 2>/dev/null || true)"
@@ -40,23 +55,34 @@ main() {
   fi
 
   changed="false"
+  direction="steady"
   if [[ -f "$state_file" ]]; then
     previous="$(<"$state_file")"
-    [[ "$previous" != "$percent:$muted" ]] && changed="true"
+    if [[ "$previous" != "$percent:$muted" ]]; then
+      changed="true"
+      if [[ "$previous" =~ ^([0-9]+): ]]; then
+        if (( percent > ${BASH_REMATCH[1]} )); then
+          direction="up"
+        elif (( percent < ${BASH_REMATCH[1]} )); then
+          direction="down"
+        fi
+      fi
+    fi
   fi
   printf '%s' "$percent:$muted" > "$state_file"
 
   class_json="\"class\":[\"$level\"]"
   if [[ "$changed" == "true" ]]; then
-    class_json="\"class\":[\"$level\",\"changed\"]"
+    class_json="\"class\":[\"$level\",\"changed\",\"changed-$direction\"]"
   fi
 
+  bar="$(build_bar "$percent")"
   tooltip="Volume: ${percent}%"
   [[ "$muted" == "true" ]] && tooltip="${tooltip} (mute)"
   tooltip="$(escape_json "$tooltip")"
 
-  printf '{"text":"%s %s%%",%s,"tooltip":"%s"}\n' \
-    "$icon" "$percent" "$class_json" "$tooltip"
+  printf '{"text":"%s %s%% %s",%s,"tooltip":"%s"}\n' \
+    "$icon" "$percent" "$bar" "$class_json" "$tooltip"
 }
 
 main
