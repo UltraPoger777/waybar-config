@@ -1,0 +1,91 @@
+/* ================================
+   QUICK THEME EDIT
+   Change only these variables first
+   ================================ */
+@define-color bg #14161d;
+@define-color bg-soft #1d212c;
+@define-color fg #d9e0ee;
+@define-color accent #7aa2f7;
+@define-color ok #9ece6a;
+@define-color warn #e0af68;
+@define-color crit #f7768e;
+
+* {
+  border: none;
+  border-radius: 0;
+  font-family: "JetBrainsMono Nerd Font", "Noto Sans", sans-serif;
+  font-size: 13px;
+  min-height: 0;
+}
+
+window#waybar {
+  background: transparent;
+  color: @fg;
+}
+
+#custom-menu,
+#cpu,
+#memory,
+#temperature,
+#custom-nvidia,
+#clock,
+#network,
+#bluetooth,
+#pulseaudio,
+#backlight,
+#battery,
+#tray {
+  background: @bg;
+  margin: 6px 0;
+  padding: 0 12px;
+  border-radius: 12px;
+  border: 1px solid alpha(@bg-soft, 0.7);
+}
+
+#custom-menu {
+  color: @accent;
+  font-weight: 700;
+}
+
+#clock {
+  background: @bg-soft;
+  color: @accent;
+  font-weight: 700;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+#temperature.critical,
+#battery.critical:not(.charging),
+#custom-nvidia.critical {
+  color: @crit;
+  border-color: alpha(@crit, 0.6);
+}
+
+#battery.warning:not(.charging),
+#custom-nvidia.warning {
+  color: @warn;
+  border-color: alpha(@warn, 0.6);
+}
+
+#battery.charging,
+#custom-nvidia.idle {
+  color: @ok;
+}
+
+#network.disconnected,
+#bluetooth.disabled,
+#pulseaudio.muted {
+  color: @warn;
+}
+
+tooltip {
+  border-radius: 10px;
+  border: 1px solid alpha(@bg-soft, 0.8);
+  background: @bg;
+}
+
+tooltip label {
+  color: @fg;
+  padding: 4px;
+}
