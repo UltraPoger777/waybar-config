@@ -21,7 +21,7 @@
   ],
 
   "custom/weather": {
-    "exec": "$HOME/.config/waybar/scripts/weather.sh",
+    "exec": "bash \"$HOME/.config/waybar/scripts/weather.sh\"",
     "return-type": "json",
     "interval": 900,
     "format": "{}",
@@ -30,24 +30,24 @@
   },
 
   "custom/time-todo": {
-    "exec": "$HOME/.config/waybar/scripts/time_todo.sh",
+    "exec": "bash \"$HOME/.config/waybar/scripts/time_todo.sh\"",
     "return-type": "json",
     "interval": 15,
     "format": "{}",
     "tooltip": true,
-    "on-click": "$HOME/.config/waybar/scripts/todo_menu.sh",
+    "on-click": "bash \"$HOME/.config/waybar/scripts/todo_menu.sh\"",
     "on-click-right": "sh -c 'mkdir -p \"$HOME/.config/waybar\"; touch \"$HOME/.config/waybar/todo.txt\"; xdg-open \"$HOME/.config/waybar/todo.txt\"'"
   },
   "custom/quick-settings": {
-    "exec": "$HOME/.config/waybar/scripts/quick_settings_status.sh",
+    "exec": "bash \"$HOME/.config/waybar/scripts/quick_settings_status.sh\"",
     "return-type": "json",
     "interval": 5,
     "format": "{}",
     "tooltip": true,
-    "on-click": "$HOME/.config/waybar/scripts/quick_settings_menu.sh"
+    "on-click": "bash \"$HOME/.config/waybar/scripts/quick_settings_menu.sh\""
   },
   "custom/media": {
-    "exec": "$HOME/.config/waybar/scripts/media.sh",
+    "exec": "bash \"$HOME/.config/waybar/scripts/media.sh\"",
     "return-type": "json",
     "interval": 2,
     "format": "{}",
@@ -90,7 +90,7 @@
   },
 
   "custom/volume": {
-    "exec": "$HOME/.config/waybar/scripts/volume.sh",
+    "exec": "bash \"$HOME/.config/waybar/scripts/volume.sh\"",
     "return-type": "json",
     "interval": 1,
     "format": "{}",
@@ -100,7 +100,7 @@
     "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
   },
   "custom/brightness": {
-    "exec": "$HOME/.config/waybar/scripts/brightness.sh",
+    "exec": "bash \"$HOME/.config/waybar/scripts/brightness.sh\"",
     "return-type": "json",
     "interval": 1,
     "format": "{}",

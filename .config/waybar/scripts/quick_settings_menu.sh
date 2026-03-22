@@ -136,7 +136,7 @@ connect_bluetooth() {
 }
 
 toggle_hotspot() {
-  "$SCRIPT_DIR/hotspot_toggle.sh" || true
+  bash "$SCRIPT_DIR/hotspot_toggle.sh" || true
   notify "Hotspot toggled"
 }
 
