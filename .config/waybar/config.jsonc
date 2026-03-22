@@ -9,7 +9,9 @@
     "mpris"
   ],
   "modules-center": [
-    "clock#main"
+    "hyprland/workspaces",
+    "clock#main",
+    "custom/todo"
   ],
   "modules-right": [
     "battery",
@@ -43,6 +45,24 @@
         "weekdays": "<span color='#fab387'><b>{}</b></span>",
         "today": "<span color='#f38ba8'><b>{}</b></span>"
       }
+    }
+  },
+  "custom/todo": {
+    "exec": "$HOME/.config/waybar/scripts/todo.sh",
+    "return-type": "json",
+    "interval": 20,
+    "format": "{}",
+    "tooltip": true,
+    "on-click": "xdg-open \"$HOME/.config/waybar/todo.txt\""
+  },
+  "hyprland/workspaces": {
+    "active-only": false,
+    "all-outputs": false,
+    "format": "{icon}",
+    "format-icons": {
+      "active": "",
+      "default": "",
+      "empty": ""
     }
   },
   "battery": {

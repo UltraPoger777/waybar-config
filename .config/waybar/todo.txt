@@ -1,0 +1,5 @@
+# Lines starting with # are ignored
+# Use markdown checkboxes:
+- [ ] Check emails
+- [ ] Update notes
+- [x] Configure Waybar
