@@ -1,23 +1,26 @@
 # waybar-config
 
-Конфиг Waybar с:
+Waybar setup with:
 
-- блоком **погода + календарь**, который раскрывается при наведении (`group/weather_calendar` + `drawer`);
-- поддержкой **Spotify** через модуль `mpris`;
-- анимациями отклика при изменении **громкости** и **яркости**.
+- weather module on the left;
+- calendar tooltip when hovering the time module;
+- Spotify support via `mpris`;
+- battery module on the right;
+- animated feedback for volume and brightness updates;
+- transparent bar background with bubble-style modules.
 
-## Файлы
+## Files
 
-- `.config/waybar/config.jsonc` — основной конфиг Waybar;
-- `.config/waybar/style.css` — стили и анимации;
-- `.config/waybar/scripts/weather.sh` — данные погоды с wttr.in;
-- `.config/waybar/scripts/volume.sh` — громкость PipeWire (`wpctl`);
-- `.config/waybar/scripts/brightness.sh` — яркость (`brightnessctl`).
+- `.config/waybar/config.jsonc` - main Waybar config;
+- `.config/waybar/style.css` - styles and animations;
+- `.config/waybar/scripts/weather.sh` - weather data from wttr.in;
+- `.config/waybar/scripts/volume.sh` - PipeWire volume (`wpctl`);
+- `.config/waybar/scripts/brightness.sh` - display brightness (`brightnessctl`).
 
-## Зависимости
+## Dependencies
 
 - `waybar`
 - `curl`
 - `pipewire` / `wireplumber` (`wpctl`)
 - `brightnessctl`
-- (опционально) `playerctl` и запущенный Spotify-клиент для MPRIS
+- (optional) running Spotify client for MPRIS

@@ -15,7 +15,7 @@ main() {
 
   percent="$(brightnessctl -m 2>/dev/null | awk -F, '{gsub(/%/, "", $NF); print $NF}' || true)"
   if [[ -z "$percent" ]]; then
-    echo '{"text":"󰃠 N/A","class":"level-low","tooltip":"brightnessctl недоступен"}'
+    echo '{"text":"󰃠 N/A","class":"level-low","tooltip":"brightnessctl is not available"}'
     exit 0
   fi
 
@@ -42,7 +42,7 @@ main() {
     class="$class changed"
   fi
 
-  tooltip="$(escape_json "Яркость: ${percent}%")"
+  tooltip="$(escape_json "Brightness: ${percent}%")"
   printf '{"text":"%s %s%%","class":"%s","tooltip":"%s"}\n' \
     "$icon" "$percent" "$class" "$tooltip"
 }

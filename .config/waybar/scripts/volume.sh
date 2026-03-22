@@ -15,7 +15,7 @@ main() {
 
   output="$(wpctl get-volume @DEFAULT_AUDIO_SINK@ 2>/dev/null || true)"
   if [[ -z "$output" ]]; then
-    echo '{"text":"󰕿 N/A","class":"level-low","tooltip":"wpctl недоступен"}'
+    echo '{"text":"󰕿 N/A","class":"level-low","tooltip":"wpctl is not available"}'
     exit 0
   fi
 
@@ -51,7 +51,7 @@ main() {
     class="$class changed"
   fi
 
-  tooltip="Громкость: ${percent}%"
+  tooltip="Volume: ${percent}%"
   [[ "$muted" == "true" ]] && tooltip="${tooltip} (mute)"
   tooltip="$(escape_json "$tooltip")"
 

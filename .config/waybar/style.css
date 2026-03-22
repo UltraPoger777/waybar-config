@@ -5,14 +5,15 @@
 }
 
 window#waybar {
-  background: rgba(24, 24, 37, 0.86);
+  background: transparent;
   color: #cdd6f4;
-  border-bottom: 1px solid rgba(147, 153, 178, 0.25);
+  border: none;
 }
 
-#group-weather_calendar,
+#custom-weather,
 #mpris,
 #clock,
+#battery,
 #custom-volume,
 #custom-brightness,
 #tray {
@@ -20,16 +21,6 @@ window#waybar {
   padding: 0 10px;
   border-radius: 10px;
   background: rgba(49, 50, 68, 0.85);
-}
-
-#group-weather_calendar {
-  padding-left: 6px;
-  padding-right: 6px;
-}
-
-#custom-weather-toggle {
-  color: #89b4fa;
-  padding-right: 4px;
 }
 
 #custom-weather.weather-clear {
@@ -52,6 +43,18 @@ window#waybar {
 
 #mpris {
   color: #a6e3a1;
+}
+
+#battery {
+  color: #94e2d5;
+}
+
+#battery.warning {
+  color: #f9e2af;
+}
+
+#battery.critical:not(.charging) {
+  color: #f38ba8;
 }
 
 #custom-volume,

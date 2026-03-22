@@ -12,11 +12,11 @@ escape_json() {
 main() {
   local weather_text condition icon class tooltip
 
-  weather_text="$(curl -sf --max-time 6 "https://wttr.in/?format=%t+%C" || true)"
-  tooltip="$(curl -sf --max-time 6 "https://wttr.in/?format=%l:+%c+%t+%h+%w" || true)"
+  weather_text="$(curl -sf --max-time 6 "https://wttr.in/?format=%t+%C&lang=en" || true)"
+  tooltip="$(curl -sf --max-time 6 "https://wttr.in/?format=%l:+%c+%t+%h+%w&lang=en" || true)"
 
   if [[ -z "${weather_text}" ]]; then
-    echo '{"text":"󰼯 N/A","class":"weather-error","tooltip":"Не удалось получить погоду"}'
+    echo '{"text":"󰼯 N/A","class":"weather-error","tooltip":"Failed to fetch weather"}'
     exit 0
   fi
 
