@@ -9,10 +9,10 @@
     "hyprland/workspaces"
   ],
   "modules-center": [
-    "group/time_center"
+    "custom/time-todo"
   ],
   "modules-right": [
-    "group/quick_settings",
+    "custom/quick-settings",
     "custom/media",
     "battery",
     "custom/brightness",
@@ -29,88 +29,22 @@
     "on-click": "xdg-open \"https://wttr.in\""
   },
 
-  "group/time_center": {
-    "orientation": "inherit",
-    "drawer": {
-      "transition-duration": 240,
-      "children-class": "time-center-child",
-      "transition-left-to-right": true
-    },
-    "modules": [
-      "clock#main",
-      "custom/todo-inline"
-    ],
-    "tooltip": false
-  },
-  "clock#main": {
-    "locale": "en_US.UTF-8",
-    "format": "  {:%H:%M}",
-    "tooltip-format": "<tt><small>{calendar}</small></tt>",
-    "calendar": {
-      "mode": "month",
-      "mode-mon-col": 3,
-      "weeks-pos": "right",
-      "on-scroll": 1,
-      "format": {
-        "months": "<span color='#f5c2e7'><b>{}</b></span>",
-        "days": "<span color='#89b4fa'><b>{}</b></span>",
-        "weeks": "<span color='#a6e3a1'><b>W{}</b></span>",
-        "weekdays": "<span color='#fab387'><b>{}</b></span>",
-        "today": "<span color='#f38ba8'><b>{}</b></span>"
-      }
-    }
-  },
-  "custom/todo-inline": {
-    "exec": "$HOME/.config/waybar/scripts/todo_inline.sh",
+  "custom/time-todo": {
+    "exec": "$HOME/.config/waybar/scripts/time_todo.sh",
     "return-type": "json",
-    "interval": 20,
+    "interval": 15,
     "format": "{}",
     "tooltip": true,
-    "on-click": "sh -c 'mkdir -p \"$HOME/.config/waybar\"; touch \"$HOME/.config/waybar/todo.txt\"; xdg-open \"$HOME/.config/waybar/todo.txt\"'",
+    "on-click": "$HOME/.config/waybar/scripts/todo_menu.sh",
     "on-click-right": "sh -c 'mkdir -p \"$HOME/.config/waybar\"; touch \"$HOME/.config/waybar/todo.txt\"; xdg-open \"$HOME/.config/waybar/todo.txt\"'"
   },
-  "group/quick_settings": {
-    "orientation": "inherit",
-    "drawer": {
-      "transition-duration": 240,
-      "children-class": "quick-settings-child",
-      "transition-left-to-right": true
-    },
-    "modules": [
-      "custom/quick-settings-icon",
-      "custom/wifi",
-      "custom/bluetooth",
-      "custom/hotspot"
-    ],
-    "tooltip": false
-  },
-  "custom/quick-settings-icon": {
-    "format": "󰒓",
-    "tooltip": false
-  },
-  "custom/wifi": {
-    "exec": "$HOME/.config/waybar/scripts/wifi_status.sh",
+  "custom/quick-settings": {
+    "exec": "$HOME/.config/waybar/scripts/quick_settings_status.sh",
     "return-type": "json",
     "interval": 5,
     "format": "{}",
     "tooltip": true,
-    "on-click": "$HOME/.config/waybar/scripts/wifi_toggle.sh"
-  },
-  "custom/bluetooth": {
-    "exec": "$HOME/.config/waybar/scripts/bluetooth_status.sh",
-    "return-type": "json",
-    "interval": 5,
-    "format": "{}",
-    "tooltip": true,
-    "on-click": "$HOME/.config/waybar/scripts/bluetooth_toggle.sh"
-  },
-  "custom/hotspot": {
-    "exec": "$HOME/.config/waybar/scripts/hotspot_status.sh",
-    "return-type": "json",
-    "interval": 5,
-    "format": "{}",
-    "tooltip": true,
-    "on-click": "$HOME/.config/waybar/scripts/hotspot_toggle.sh"
+    "on-click": "$HOME/.config/waybar/scripts/quick_settings_menu.sh"
   },
   "custom/media": {
     "exec": "$HOME/.config/waybar/scripts/media.sh",

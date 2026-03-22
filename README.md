@@ -4,9 +4,9 @@ Waybar setup with:
 
 - weather module on the left;
 - Hyprland workspace indicator between weather and centered time;
-- centered time module with calendar tooltip;
-- hover drawer near time with inline to-do list;
-- quick settings hover drawer (Wi-Fi / Bluetooth / Hotspot);
+- centered time module with tooltip that shows calendar + TODO side-by-side;
+- TODO manager menu (add/toggle/remove) on click;
+- quick settings menu for Wi-Fi / Bluetooth / Hotspot with network selection;
 - media/player bubble with fallback text when nothing is playing;
 - battery module on the right;
 - animated feedback + progress indicators for volume and brightness;
@@ -17,14 +17,15 @@ Waybar setup with:
 - `.config/waybar/config.jsonc` - main Waybar config;
 - `.config/waybar/style.css` - styles and animations;
 - `.config/waybar/scripts/weather.sh` - weather data from wttr.in;
-- `.config/waybar/scripts/todo_inline.sh` - inline todo preview for hover next to clock;
-- `.config/waybar/scripts/todo.sh` - parses todo list and shows pending count;
+- `.config/waybar/scripts/time_todo.sh` - time module with combined calendar + TODO tooltip;
+- `.config/waybar/scripts/todo_menu.sh` - interactive TODO manager (add/toggle/remove);
+- `.config/waybar/scripts/menu_select.sh` - dmenu backend wrapper (wofi/rofi/fuzzel);
 - `.config/waybar/scripts/media.sh` - media status via `playerctl`;
 - `.config/waybar/scripts/volume.sh` - PipeWire volume (`wpctl`);
 - `.config/waybar/scripts/brightness.sh` - display brightness (`brightnessctl`).
-- `.config/waybar/scripts/wifi_status.sh` / `wifi_toggle.sh` - Wi-Fi status and toggle;
-- `.config/waybar/scripts/bluetooth_status.sh` / `bluetooth_toggle.sh` - Bluetooth status and toggle;
-- `.config/waybar/scripts/hotspot_status.sh` / `hotspot_toggle.sh` - Hotspot status and toggle;
+- `.config/waybar/scripts/quick_settings_status.sh` - quick settings icon status;
+- `.config/waybar/scripts/quick_settings_menu.sh` - interactive quick settings menu;
+- `.config/waybar/scripts/hotspot_toggle.sh` - hotspot toggle helper;
 - `.config/waybar/todo.txt` - editable todo list source.
 
 ## Dependencies
@@ -35,5 +36,6 @@ Waybar setup with:
 - `playerctl`
 - `networkmanager` (`nmcli`)
 - `bluez` (`bluetoothctl`)
+- one launcher for menus: `wofi` or `rofi` or `fuzzel`
 - `pipewire` / `wireplumber` (`wpctl`)
 - `brightnessctl`

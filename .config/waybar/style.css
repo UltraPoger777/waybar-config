@@ -12,8 +12,8 @@ window#waybar {
 
 #custom-weather,
 #workspaces,
-#group-time_center,
-#group-quick_settings,
+#custom-time-todo,
+#custom-quick-settings,
 #custom-media,
 #battery,
 #custom-volume,
@@ -48,43 +48,34 @@ window#waybar {
   color: #b4befe;
 }
 
-#group-time_center {
+#custom-time-todo {
   padding-left: 8px;
   padding-right: 8px;
 }
 
-#custom-todo-inline {
+#custom-time-todo.todo-active {
   color: #f9e2af;
-  margin-left: 6px;
-}
-
-#custom-todo-inline.todo-done {
-  color: #a6e3a1;
 }
 
 #workspaces {
   margin-right: 6px;
 }
 
-#group-quick_settings {
+#custom-quick-settings {
   padding-left: 8px;
   padding-right: 8px;
   margin-right: 6px;
 }
 
-#custom-quick-settings-icon {
+#custom-quick-settings {
   color: #89b4fa;
 }
 
-#custom-wifi.qs-on,
-#custom-bluetooth.qs-on,
-#custom-hotspot.qs-on {
+#custom-quick-settings.qs-on {
   color: #a6e3a1;
 }
 
-#custom-wifi.qs-off,
-#custom-bluetooth.qs-off,
-#custom-hotspot.qs-off {
+#custom-quick-settings.qs-off {
   color: #f9e2af;
 }
 
