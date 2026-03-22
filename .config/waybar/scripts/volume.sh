@@ -10,7 +10,7 @@ escape_json() {
 }
 
 main() {
-  local state_file output volume muted percent icon level changed class tooltip previous
+  local state_file output volume muted percent icon level changed class_json tooltip previous
   state_file="${XDG_RUNTIME_DIR:-/tmp}/waybar-volume.prev"
 
   output="$(wpctl get-volume @DEFAULT_AUDIO_SINK@ 2>/dev/null || true)"
@@ -46,17 +46,17 @@ main() {
   fi
   printf '%s' "$percent:$muted" > "$state_file"
 
-  class="$level"
+  class_json="\"class\":[\"$level\"]"
   if [[ "$changed" == "true" ]]; then
-    class="$class changed"
+    class_json="\"class\":[\"$level\",\"changed\"]"
   fi
 
   tooltip="Volume: ${percent}%"
   [[ "$muted" == "true" ]] && tooltip="${tooltip} (mute)"
   tooltip="$(escape_json "$tooltip")"
 
-  printf '{"text":"%s %s%%","class":"%s","tooltip":"%s"}\n' \
-    "$icon" "$percent" "$class" "$tooltip"
+  printf '{"text":"%s %s%%",%s,"tooltip":"%s"}\n' \
+    "$icon" "$percent" "$class_json" "$tooltip"
 }
 
 main

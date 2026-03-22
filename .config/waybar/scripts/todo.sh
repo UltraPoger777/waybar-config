@@ -25,7 +25,7 @@ main() {
 
   if [[ ! -f "$todo_file" ]]; then
     printf '{"text":"󰄱 0","class":"todo-empty","tooltip":"%s"}\n' \
-      "$(escape_json "No todo file found. Create: $default_file")"
+      "$(escape_json "No todo file found.\nLeft click to create/open: $default_file")"
     exit 0
   fi
 
@@ -53,10 +53,10 @@ main() {
   text="󰄱 ${pending}"
   if (( pending > 0 )); then
     class="todo-active"
-    tooltip="Pending: ${pending}\nDone: ${completed}\n\n${tooltip}"
+    tooltip="Pending: ${pending}\nDone: ${completed}\n\n${tooltip}\nLeft click: open todo file"
   else
     class="todo-done"
-    tooltip="All tasks complete (${completed} done)"
+    tooltip="All tasks complete (${completed} done)\nLeft click: open todo file"
   fi
 
   printf '{"text":"%s","class":"%s","tooltip":"%s"}\n' \

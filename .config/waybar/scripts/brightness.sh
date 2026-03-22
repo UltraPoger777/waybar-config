@@ -10,7 +10,7 @@ escape_json() {
 }
 
 main() {
-  local state_file percent icon level changed class previous tooltip
+  local state_file percent icon level changed class_json previous tooltip
   state_file="${XDG_RUNTIME_DIR:-/tmp}/waybar-brightness.prev"
 
   percent="$(brightnessctl -m 2>/dev/null | awk -F, '{gsub(/%/, "", $NF); print $NF}' || true)"
@@ -37,14 +37,14 @@ main() {
   fi
   printf '%s' "$percent" > "$state_file"
 
-  class="$level"
+  class_json="\"class\":[\"$level\"]"
   if [[ "$changed" == "true" ]]; then
-    class="$class changed"
+    class_json="\"class\":[\"$level\",\"changed\"]"
   fi
 
   tooltip="$(escape_json "Brightness: ${percent}%")"
-  printf '{"text":"%s %s%%","class":"%s","tooltip":"%s"}\n' \
-    "$icon" "$percent" "$class" "$tooltip"
+  printf '{"text":"%s %s%%",%s,"tooltip":"%s"}\n' \
+    "$icon" "$percent" "$class_json" "$tooltip"
 }
 
 main
