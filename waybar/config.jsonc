@@ -1,0 +1,155 @@
+[
+  {
+    // ------------------------------
+    // QUICK CUSTOMIZATION
+    // 1) Reorder/remove modules in modules-left/center/right
+    // 2) Tune module formats/icons below
+    // 3) Edit colors, radius and spacing in style.css
+    // ------------------------------
+    "layer": "top",
+    "position": "top",
+    "height": 34,
+    "spacing": 8,
+    "margin-top": 6,
+    "margin-left": 8,
+    "margin-right": 8,
+
+    "modules-left": [
+      "custom/menu",
+      "cpu",
+      "memory",
+      "temperature",
+      "custom/nvidia"
+    ],
+    "modules-center": [
+      "clock"
+    ],
+    "modules-right": [
+      "network",
+      "bluetooth",
+      "pulseaudio",
+      "backlight",
+      "battery",
+      "tray"
+    ],
+
+    "custom/menu": {
+      "format": " Apps",
+      "tooltip": false,
+      "on-click": "wofi --show drun"
+    },
+
+    "cpu": {
+      "interval": 2,
+      "format": " {usage:>2}%",
+      "tooltip": true
+    },
+
+    "memory": {
+      "interval": 5,
+      "format": " {}%",
+      "tooltip-format": "RAM: {used:0.1f}G / {total:0.1f}G"
+    },
+
+    "temperature": {
+      "critical-threshold": 85,
+      "format": "{icon} {temperatureC}°C",
+      "format-icons": [
+        "",
+        "",
+        ""
+      ],
+      "tooltip": true
+    },
+
+    "custom/nvidia": {
+      "exec": "~/.config/waybar/scripts/nvidia-status.sh",
+      "interval": 5,
+      "return-type": "json",
+      "format": "{}",
+      "tooltip": true,
+      "on-click": "alacritty -e nvidia-smi"
+    },
+
+    "clock": {
+      "interval": 1,
+      "format": " {:%a, %d %b  %H:%M}",
+      "tooltip-format": "<tt>{calendar}</tt>",
+      "calendar": {
+        "mode": "month",
+        "mode-mon-col": 3,
+        "weeks-pos": "right",
+        "on-scroll": 1
+      }
+    },
+
+    "network": {
+      "format-wifi": "  {signalStrength}%",
+      "format-ethernet": "󰈁 LAN",
+      "format-disconnected": "󰖪 Offline",
+      "tooltip-format-wifi": "{essid} ({ipaddr})",
+      "tooltip-format-ethernet": "{ifname} ({ipaddr})",
+      "tooltip-format-disconnected": "No network"
+    },
+
+    "bluetooth": {
+      "format": " {status}",
+      "format-connected": " {num_connections}",
+      "format-disabled": " off",
+      "tooltip-format": "{device_alias}"
+    },
+
+    "pulseaudio": {
+      "format": "{icon} {volume}%",
+      "format-muted": "󰝟 mute",
+      "format-icons": {
+        "headphone": "",
+        "hands-free": "",
+        "headset": "󰋎",
+        "phone": "",
+        "portable": "",
+        "car": "",
+        "default": [
+          "",
+          "",
+          ""
+        ]
+      },
+      "on-click": "pavucontrol"
+    },
+
+    "backlight": {
+      "format": " {percent}%",
+      "tooltip": true
+    },
+
+    "battery": {
+      "states": {
+        "warning": 30,
+        "critical": 15
+      },
+      "format": "{icon} {capacity}%",
+      "format-charging": " {capacity}%",
+      "format-plugged": " {capacity}%",
+      "format-alt": "{time} {icon}",
+      "format-icons": [
+        "󰂎",
+        "󰁺",
+        "󰁻",
+        "󰁼",
+        "󰁽",
+        "󰁾",
+        "󰁿",
+        "󰂀",
+        "󰂁",
+        "󰂂",
+        "󰁹"
+      ]
+    },
+
+    "tray": {
+      "icon-size": 14,
+      "spacing": 8
+    }
+  }
+]
