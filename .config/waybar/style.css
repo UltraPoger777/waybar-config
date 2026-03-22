@@ -1,0 +1,99 @@
+* {
+  font-family: "JetBrainsMono Nerd Font", "Noto Sans", sans-serif;
+  font-size: 13px;
+  min-height: 0;
+}
+
+window#waybar {
+  background: rgba(24, 24, 37, 0.86);
+  color: #cdd6f4;
+  border-bottom: 1px solid rgba(147, 153, 178, 0.25);
+}
+
+#group-weather_calendar,
+#mpris,
+#clock,
+#custom-volume,
+#custom-brightness,
+#tray {
+  margin: 4px 0;
+  padding: 0 10px;
+  border-radius: 10px;
+  background: rgba(49, 50, 68, 0.85);
+}
+
+#group-weather_calendar {
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#custom-weather-toggle {
+  color: #89b4fa;
+  padding-right: 4px;
+}
+
+#custom-weather.weather-clear {
+  color: #f9e2af;
+}
+
+#custom-weather.weather-cloudy {
+  color: #bac2de;
+}
+
+#custom-weather.weather-rain,
+#custom-weather.weather-storm {
+  color: #89dceb;
+}
+
+#custom-weather.weather-snow,
+#custom-weather.weather-fog {
+  color: #b4befe;
+}
+
+#mpris {
+  color: #a6e3a1;
+}
+
+#custom-volume,
+#custom-brightness {
+  transition: background-color 180ms ease, color 180ms ease, box-shadow 180ms ease;
+}
+
+#custom-volume.level-low,
+#custom-brightness.level-low {
+  color: #bac2de;
+}
+
+#custom-volume.level-medium,
+#custom-brightness.level-medium {
+  color: #f9e2af;
+}
+
+#custom-volume.level-high,
+#custom-brightness.level-high {
+  color: #fab387;
+}
+
+#custom-volume.muted {
+  color: #f38ba8;
+}
+
+#custom-volume.changed,
+#custom-brightness.changed {
+  animation: feedback-pulse 220ms ease;
+}
+
+@keyframes feedback-pulse {
+  0% {
+    box-shadow: 0 0 0 rgba(137, 180, 250, 0);
+    background: rgba(49, 50, 68, 0.85);
+  }
+  50% {
+    box-shadow: 0 0 10px rgba(137, 180, 250, 0.55);
+    background: rgba(69, 71, 90, 0.95);
+  }
+  100% {
+    box-shadow: 0 0 0 rgba(137, 180, 250, 0);
+    background: rgba(49, 50, 68, 0.85);
+  }
+}
